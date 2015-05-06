@@ -62,6 +62,13 @@ public class MemcachedDemo {
             }
 
             System.out.println("set 操作完成");
+
+            //测试串行返回是否正常
+            for(int j = 0; j < 1000; j++){
+                memcachedClient.set("java-key-1", "java-value-1");
+                memcachedClient.set("java-key-2", "java-value-2");
+            }
+            System.out.println("set key1, key2操作完成, get key2=" + memcachedClient.get("java-key-2"));
         } catch (Exception e) {
             e.printStackTrace();
         }
