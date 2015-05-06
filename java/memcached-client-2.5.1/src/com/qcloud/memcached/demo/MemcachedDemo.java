@@ -56,12 +56,12 @@ public class MemcachedDemo {
 
             //向cmem存入多个数据
             for(int i = 0; i < 100; i++){
-                String key = "key-" + i;
-                String value = "value-" + i;
-                memcachedClient.set(key, value);
+                memcachedClient.set('java-key-1', 'java-value-1');
+                memcachedClient.set('java-key-2', 'java-value-2');
             }
 
-            System.out.println("set 操作完成");
+            System.out.println("set 100次 交叉key操作完成");
+            System.out.println("java-key-2", MemCachedClient.get('java-key-2'));
         } catch (Exception e) {
             e.printStackTrace();
         }
