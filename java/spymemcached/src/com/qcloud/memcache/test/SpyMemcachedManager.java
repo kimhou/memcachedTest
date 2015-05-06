@@ -81,7 +81,7 @@ public class SpyMemcachedManager {
 
     public void testAsync(MemcachedClient cache){
         log("info", "-----------------start test testAsync ----------------");
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             //执行set操作，向缓存中存数据
             cache.set("spy-key-1", 1000, "spy-value-1");
             cache.set("spy-key-2", 1000, "spy-value-2");
