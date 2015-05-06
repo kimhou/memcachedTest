@@ -16,6 +16,12 @@ var_dump("<br/>set finished");
 
 var_dump("<br/>get set just set value = " . $cache->get($key));
 
+for($i = 0; $i < 1000; $i++){
+	$cache->set("php-memcache-key-1", "php-memcache-value-1");
+	$cache->set("php-memcache-key-2", "php-memcache-value-2");
+}
+var_dum("<br/>串行设置完成， php-memcache-key-2=".$cache->get("php-memcache-key-2"));
+
 $cache->close();
 
 ?>
