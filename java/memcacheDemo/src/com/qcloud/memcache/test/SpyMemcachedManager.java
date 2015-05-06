@@ -68,6 +68,8 @@ public class SpyMemcachedManager {
                 getKey(cache, getKeyStr);
             }else if(type.equals("onlySet")){
                 onlySet(cache, count);
+            }else if(type.equals("testAsync")){
+                testAsync(cache);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,6 +77,16 @@ public class SpyMemcachedManager {
         if (cache != null) {
             cache.shutdown();
         }
+    }
+
+    public void testAsync(MemcachedClient cache){
+        log("info", "-----------------start test testAsync ----------------");
+        for (int i = 0; i < 100; i++) {
+            //执行set操作，向缓存中存数据
+            cache.set("spy-key-1", 1000, "spy-value-1");
+            cache.set("spy-key-2", 1000, "spy-value-2");
+        }
+        log("async set 完成", "spy-key-2=" + cache.get("spy-key-2"));
     }
 
     public void onlySet(MemcachedClient cache, int count){
